@@ -47,12 +47,20 @@ export const Product = styled('div', {
     'strong': {
       fontSize: '$lg',
       color: '$gray100',
+      
     },
-
+    div: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
     span: {
       fontSize: '$xl',
       fontWeight: 'bold',
       color: '$green300',
+    },
+
+    Image: {
+
     }
   },
 

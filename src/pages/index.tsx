@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import Head from 'next/head'
 import Image from "next/image";
 import Link from 'next/link'
+import Bag from '../assets/Bag.svg'
 
 import { useKeenSlider } from 'keen-slider/react'
 
@@ -43,8 +44,11 @@ export default function Home({ products }: HomeProps) {
                 <Image src={product.imageUrl} width={520} height={480} alt='' />
 
                 <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
+                  <div>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </div>
+                  <Image src={Bag} alt=''/>
                 </footer>
               </Product>
             </Link>
