@@ -12,14 +12,12 @@ import { HomeContainer, Product } from "../styles/pages/home";
 
 import 'keen-slider/keen-slider.min.css'
 import Stripe from "stripe";
+import { useCart } from "../hook/useCart";
+import { IProduct } from "../context/CartContext";
+import { MouseEvent } from "react";
 
 interface HomeProps {
-  products:  {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: string;
-  }[]
+  products: IProduct[]
 }
 
 export default function Home({ products }: HomeProps) {
@@ -30,6 +28,16 @@ export default function Home({ products }: HomeProps) {
     }
   })
 
+  const { addToCart } = useCart();
+
+  function handleAddToCart(
+    e: MouseEvent<HTMLButtonElement>,
+    product: IProduct
+  ) {
+    e.preventDefault();
+    addToCart(product);
+  }
+
   return (
     <>
       <Head>
@@ -39,7 +47,12 @@ export default function Home({ products }: HomeProps) {
       <HomeContainer ref={sliderRef} className='keen-slider'>
         {products.map(product => {
           return (
-            <Link href={`/product/${product.id}`} key={product.id} prefetch={true} >
+            <Link 
+              key={product.id}
+              href={`/product/${product.id}`}
+              prefetch={false}
+              passHref 
+            >
               <Product className="keen-slider__slide">
                 <Image src={product.imageUrl} width={520} height={480} alt='' />
 
@@ -48,7 +61,11 @@ export default function Home({ products }: HomeProps) {
                     <strong>{product.name}</strong>
                     <span>{product.price}</span>
                   </div>
-                  <Image src={Bag} alt=''/>
+                  <Image 
+                    src={Bag} 
+                    alt=''
+                    onClick={(e) => handleAddToCart(e, product)}
+                  />
                 </footer>
               </Product>
             </Link>
@@ -75,10 +92,11 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL'
       }).format(price.unit_amount / 100),
+      numberPrice: price.unit_amount / 100,
+      defaultPriceId: price.id,
       
     }
   })
-  console.log(response.data);
 
   return {
     props: {
