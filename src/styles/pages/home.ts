@@ -15,7 +15,7 @@ export const Product = styled('div', {
   cursor: 'pointer',
   position: 'relative',
   overflow: 'hidden',
-  minWidth: 540,
+  minWidth: 656,
 
   display: 'flex',
   alignItems: 'center',
@@ -52,16 +52,13 @@ export const Product = styled('div', {
     div: {
       display: 'flex',
       flexDirection: 'column',
+      gap: 4,
     },
     span: {
       fontSize: '$xl',
       fontWeight: 'bold',
       color: '$green300',
     },
-
-    Image: {
-
-    }
   },
 
   '&:hover': {

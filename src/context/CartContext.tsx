@@ -29,14 +29,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   const cartTotal = cartItems.reduce((total, product) => {
     return total + product.numberPrice
-  }, 0)
+  }, 0) 
 
   const addToCart = (product: IProduct) =>{
     setCartItems((state) => [...state, product])
   }
 
   const removeCartItem = (productId: string) => {
-    setCartItems((state) => state.filter((item) => item.id === productId))
+    setCartItems((state) => state.filter((item) => item.id != productId))
   }
 
   const checkIfItemAlreadyExists = (productId: string) => {

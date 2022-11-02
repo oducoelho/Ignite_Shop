@@ -35,6 +35,7 @@ export const Cart = () => {
       alert("Falha ao redirecionar ao checkout!");
     }
   }
+  
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>

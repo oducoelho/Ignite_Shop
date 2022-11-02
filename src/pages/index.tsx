@@ -2,7 +2,6 @@ import { GetStaticProps } from "next";
 import Head from 'next/head'
 import Image from "next/image";
 import Link from 'next/link'
-import Bag from '../assets/Bag.svg'
 
 import { useKeenSlider } from 'keen-slider/react'
 
@@ -15,6 +14,8 @@ import Stripe from "stripe";
 import { useCart } from "../hook/useCart";
 import { IProduct } from "../context/CartContext";
 import { MouseEvent } from "react";
+import { CartButton } from "../components/CartButton";
+
 
 interface HomeProps {
   products: IProduct[]
@@ -28,7 +29,7 @@ export default function Home({ products }: HomeProps) {
     }
   })
 
-  const { addToCart } = useCart();
+  const { addToCart, checkIfItemAlreadyExists } = useCart();
 
   function handleAddToCart(
     e: MouseEvent<HTMLButtonElement>,
@@ -61,15 +62,16 @@ export default function Home({ products }: HomeProps) {
                     <strong>{product.name}</strong>
                     <span>{product.price}</span>
                   </div>
-                  <Image 
-                    src={Bag} 
-                    alt=''
+                  <CartButton
+                    color='green'
+                    size='large'
+                    disabled={checkIfItemAlreadyExists(product.id)}
                     onClick={(e) => handleAddToCart(e, product)}
                   />
                 </footer>
               </Product>
             </Link>
-          )
+            )
         })}
       </HomeContainer>
     </>
