@@ -15,13 +15,13 @@
 * In this challenge, some extra features were added to the project that was developed in module 4. A cart was implemented in the project that uses Stripe API data, to search for existing items, and control, through the application, the number of items that the person wants to buy, with the option to add and remove items before proceeding to checkout.
 
 ## :wrench: technologies used
-* Next Js
-* TypeScript
-* ReactJs
-* Phosphoricons
-* Stiches
-* useContext
-* Radix
+* Next Js;
+* TypeScript;
+* ReactJs;
+* Phosphoricons;
+* Stiches;
+* useContext;
+* Radix;
      
 ## :rocket: Deploy
 Download the files and run the following command in the terminal: "npm install", to download the project's dependencies
