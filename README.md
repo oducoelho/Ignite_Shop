@@ -18,7 +18,7 @@
 * Next Js;
 * TypeScript;
 * ReactJs;
-* Phosphoricons;
+* Phosphoricons; 
 * Stiches;
 * useContext;
 * Radix;
