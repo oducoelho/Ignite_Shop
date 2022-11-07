@@ -1,4 +1,4 @@
-<h1 align="center">GitHub Blog</h1>
+<h1 align="center">Ignite Shop</h1>
 
 <h2>Home</h2>
 <img src="screenshot.PNG" />
